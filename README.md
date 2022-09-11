@@ -1,8 +1,12 @@
-# 🚺 Womanity
+# 🚺 Womanity Web3 
 
 A petition cum online voting website dedicated to empowering women 
 
 Our mission is to create a platform where women can demand the laws and regulations they want in a democratic way from the government.
+
+This project is made using Truffle framework. It is a blockchain project deployed in ropsten test network of ethereum.
+
+Here people can file petitions based on women security and others can sign the petition by upvoting it. 
 
 ## 🚀 Live Demo
 ![Website](https://img.shields.io/badge/website-up-greene)
@@ -15,6 +19,8 @@ Our mission is to create a platform where women can demand the laws and regulati
 ![JavaScript](https://img.shields.io/badge/JavaScript-blue?style=for-the-badge&logo=javascript&logoColor=white)
 
 ![CSS3](https://img.shields.io/badge/CSS-orange?style=for-the-badge&logo=css3&logoColor=white)
+
+
 
 #
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
