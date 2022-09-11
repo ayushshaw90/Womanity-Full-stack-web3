@@ -21,7 +21,7 @@ Our mission is to create a platform where women can demand the laws and regulati
 
 # Project maintainers and contributors
 
-<a href="https://github.com/ayushshaw90/react-truffle/graphs/contributors">
+<a href="https://github.com/ayushshaw90/Womanity-Full-stack-web3/graphs/contributors">
    <img src="https://contrib.rocks/image?repo=ayushshaw90/Womanity-Full-stack-web3" />
 
 </a>
