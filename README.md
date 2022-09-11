@@ -26,27 +26,14 @@ Our mission is to create a platform where women can demand the laws and regulati
 
 </a>
 
-## Installation
 
-First ensure you are in an empty directory.
 
-Run the `unbox` command using 1 of 2 ways.
-
-```sh
-# Install Truffle globally and run `truffle unbox`
-$ npm install -g truffle
-$ truffle unbox react
-```
-
-```sh
-# Alternatively, run `truffle unbox` via npx
-$ npx truffle unbox react
-```
 
 Start the react dev server.
 
 ```sh
 $ cd client
+$ npm install
 $ npm start
   Starting the development server...
 ```
