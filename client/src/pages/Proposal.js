@@ -9,13 +9,45 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 import back from "../images/left-chevron.png"
 
-const Proposal = () => {
+const Proposal = ({account, contract, id}) => {
+  let tempid=1;
   const { state: proposalDetails } = useLocation();
-  const [latestVote, setLatestVote] = useState();
-  const [percUp, setPercUp] = useState(0);
-  const [percDown, setPercDown] = useState(0);
-  const [votes, setVotes] = useState(
+  const [exists, setExists] = useState("false");
+  const [passed, setPassed] = useState("true");
+  const [pname, setpname] = useState("Random name")
+  const [upvotes, setupvotes] = useState(10);
+  const [downvotes, setdownvotes] = useState(30);
+  const [proposer, setProposer] = useState("0x4d2044D8D568c1644158625930De62c4AbBB004a")
+  console.log("proposal contract", contract)
+  async function fetchProposal(){
+    if(!contract) return;
+    let tempProposal = await contract.methods.Proposals(tempid).call()
+    if(pname!== tempProposal.title)
+    setpname(tempProposal.title)
+    if(tempProposal.upvotes != upvotes)
+    setupvotes(tempProposal.upvotes);
 
+    if(downvotes != tempProposal.downvotes)
+    setdownvotes(tempProposal.downvotes);
+    console.log("tempProposal", tempProposal)
+
+    if(exists !== tempProposal.exists){
+      setExists(tempProposal.exists);
+    }
+    if(passed !== tempProposal.passed){
+      setPassed(tempProposal.passed);
+    }
+  }
+  useEffect( ()=>{
+
+    fetchProposal().then(e=>1)
+  })
+  async function castvote(upvote){
+    if(contract && account){
+      await contract.methods.castVote(tempid, upvote).send({from: account})
+    }
+  }
+  const [votes, setVotes] = useState(
 
 [
   [
@@ -52,17 +84,17 @@ const Proposal = () => {
               Overview
             </div>
           </Link>
-          <div>Should we accept Elon Musks $44Billion offer for our DAO</div>
+          <div>{pname}</div>
           <div className="proposalOverview">
-            <Tag color={"red"} text={"Rejected"} />
+            <Tag color={exists? "blue": (passed? "green": "red")} text={exists? "Ongoing":(passed ? "Passed": "Rejected")} />
             <div className="proposer" style={{display: "flex", flexDirection: "column"}}>
               <span>Proposed By</span>
-              <span>0x847528dddF11BF87A8837642E4cE8533f02ac9EA</span>
+              <span>{proposer}</span>
             </div>
           </div>
         </div>
         <div className="widgets">
-          <Widget info={10} title="Votes For">
+          <Widget info={upvotes} title="Votes For">
             <div className="extraWidgetInfo">
               <div className="extraTitle">{25}%</div>
               <div className="progress">
@@ -70,7 +102,7 @@ const Proposal = () => {
               </div>
             </div>
           </Widget>
-          <Widget info={30} title="Votes Against">
+          <Widget info={downvotes} title="Votes Against">
             <div className="extraWidgetInfo">
               <div className="extraTitle">{75}%</div>
               <div className="progress">
@@ -110,8 +142,15 @@ const Proposal = () => {
               }
             }
           ]}
-          onSubmit={(e)=> {
+          onSubmit={async (e)=> {
             alert("Vote cast");
+            let tempop = e.data[0].inputResult[0];
+            if(tempop==="For"){
+              await castvote(true)
+            }else{
+              await castvote(false)
+            }
+            console.log("vote option", e)
           }}
           title="Cast Vote"
           />

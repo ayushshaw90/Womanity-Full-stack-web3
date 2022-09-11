@@ -1,5 +1,3 @@
-
-
 import DPetitionerJson from './contracts/DPetitioner.json'
 import React from "react";
 import "./App.css";
@@ -74,7 +72,7 @@ const App = () => {
     const DPetitionerData = DPetitionerJson.networks[networkId]
     if(DPetitionerData){
       console.log("DPetitioner data if statement")
-      const tempContract = new web3.eth.Contract(DPetitionerJson.abi, DPetitionerData.address)
+      const tempContract = await new web3.eth.Contract(DPetitionerJson.abi, DPetitionerData.address)
       setDPetitioner(tempContract);
       console.log("contract", tempContract)
       var usertemp = "";
@@ -100,7 +98,7 @@ const App = () => {
           tttmp.color = "blue"
         }else{
           if(ttmp.passed){
-            tttmp.text = "Passed",
+            tttmp.text = "Passed"
             tttmp.color = "green"
           }else{
             tttmp.text = "Rejected"
@@ -142,10 +140,15 @@ const App = () => {
     
   }, [])
 
+  //functions for proposal
+  async function FetchProposal(_id){
+
+  }
+
   return (
     <>
-    <h1>Hello World</h1>
-    <h2>{account}</h2>
+    {/* <h1>Hello World</h1>
+    <h2>{account}</h2> */}
     
       <div className="header">
         <img width="160px" src={Logo} alt="logo" />
@@ -153,8 +156,8 @@ const App = () => {
       </div>
       {/* <Home></Home> */}
       <Routes>
-        {account && <Route path="/" element={<Home contract={DPetitioner} account={account} totalProposals={totalProposals} eligibleVoters={eligibleVoters} ongoing={ongoing} proposalsdata={proposalData} />}  />}
-        <Route path="/proposal" element={<Proposal />} />
+        {account && <Route path="/" element={<Home contract={DPetitioner} account={account} totalProposals={totalProposals} eligibleVoters={eligibleVoters} ongoing={ongoing} proposalsdata={proposalData} passrate={(totalProposals-ongoing)/totalProposals*100} />}  />}
+        <Route path="/proposal" element={<Proposal contract={DPetitioner} account={account} />} />
       </Routes>
     </>
   );

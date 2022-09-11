@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import { TabList, Tab, Widget, Tag, Table, Form } from "@web3uikit/core";
 // import { Link } from "react-router-dom";
 
-const Home = ({contract, account, totalProposals, eligibleVoters, ongoing, proposalsdata}) => {
+const Home = ({contract, account, totalProposals, eligibleVoters, ongoing, proposalsdata, passrate}) => {
   // const [totalProposals, setTotalProposal] = useState(52);
   // const [eligibleVoters, setEligibleVoters] = useState(423);
   // const [ongoing, setongoing] = useState(5);
@@ -75,7 +75,7 @@ const Home = ({contract, account, totalProposals, eligibleVoters, ongoing, propo
                   <div className="extraWidgetInfo">
                     <div className="extraTitle">Pass Rate</div>
                     <div className="progress">
-                      <div className="progressPercentage" style={{ width: `${60}%` }}>
+                      <div className="progressPercentage" style={{ width: `${passrate}%` }}>
                       </div>
                     </div>
                   </div>
