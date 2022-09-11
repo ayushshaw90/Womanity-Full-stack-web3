@@ -17,33 +17,7 @@ const Home = ({contract, account, totalProposals, eligibleVoters, ongoing, propo
   // }, [])
   // const [proposals, setProposals] = useState(
     let proposals = [
-      [
-        1,
-        <div>Should we start a Moralis hamburger chain?</div>,
-        <Tag color="green" text="Passed" />,
-      ],
-      [
-        2,
-        "Should we accept Elon Musks $44billion offer for our DAO?",
-        <Link to="/proposal" state={"hello"}>
-          <Tag color="red" text="Rejected" />
-        </Link>,
-      ],
-      [
-        3,
-        "Do you want a Web3 Slack tutorial?",
-        <Tag color="blue" text="Ongoing" />,
-      ],
-      [
-        4,
-        "Are you interested in Xbox/Console web3 tutorials?",
-        <Tag color="blue" text="Ongoing" />,
-      ],
-      [
-        5,
-        "Would you attend a Moralis Builder get together in Miami?",
-        <Tag color="blue" text="Ongoing" />,
-      ],
+      
     ]
   // )
   
@@ -51,7 +25,7 @@ const Home = ({contract, account, totalProposals, eligibleVoters, ongoing, propo
       let arr = [];
       arr[0]=e.id;
       arr[1]=e.title;
-      arr[2]=<button onClick={(ex)=>{setid(e.id)}}><Link to="/proposal"><Tag color={e.color} text={e.text}/></Link></button>
+      arr[2]=<button style={{border: "0px", backgroundColor: "#ffffff"}} onClick={(ex)=>{setid(e.id)}}><Link to="/proposal"><Tag color={e.color} text={e.text}/></Link></button>
       return(
         arr
       )
@@ -62,10 +36,10 @@ const Home = ({contract, account, totalProposals, eligibleVoters, ongoing, propo
   return (
     <>
       <div className="content">
-        <TabList defaultActiveKey={1} tabStyle="bulbUnion">
-          <Tab tabKey={1} tabName="DAO">
+        <TabList defaultActiveKey={1} tabStyle="bulbSeperate">
+          <Tab tabKey={1} tabName="Womanity">
             <div className="tabContent">
-              Governance Overview
+              Petition Stats
               <div className="widgets">
                 <Widget
                   info={totalProposals}
@@ -84,7 +58,7 @@ const Home = ({contract, account, totalProposals, eligibleVoters, ongoing, propo
                 <Widget info={ongoing} title="Ongoing Proposals" />
               </div>
               <div style={{ marginTop: "30px" }}>
-                Recent Proposals
+                Recent Petitions
                 <Table
                   columnsConfig="10% 70% 20%"
                   data={proposals}
@@ -129,8 +103,8 @@ const Home = ({contract, account, totalProposals, eligibleVoters, ongoing, propo
               />
             </div>
           </Tab>
-          <Tab tabKey={2} tabName="Forum"></Tab>
-          <Tab tabKey={3} tabName="Docs"></Tab>
+          {/* <Tab tabKey={2} tabName="Forum"></Tab>
+          <Tab tabKey={3} tabName="Docs"></Tab> */}
         </TabList>
       </div>
       <div className="voting"></div>

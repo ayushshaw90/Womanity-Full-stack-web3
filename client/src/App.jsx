@@ -4,7 +4,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Proposal from "./pages/Proposal";
-import Logo from "./images/Moralis.png";
+import Logo from "./images/beauty.png";
 import { Button } from "@web3uikit/core";
 import { useState, useEffect } from "react";
 import Web3 from "web3";
@@ -155,7 +155,7 @@ const App = () => {
     
       <div className="header">
         <img width="160px" src={Logo} alt="logo" />
-        <Button text={username}/>
+        <div><Button text={"Womanity"}/></div>
       </div>
       {/* <Home></Home> */}
       <Routes>
