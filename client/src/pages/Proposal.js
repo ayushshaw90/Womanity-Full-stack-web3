@@ -10,7 +10,8 @@ import { useLocation } from "react-router";
 import back from "../images/left-chevron.png"
 
 const Proposal = ({account, contract, id}) => {
-  let tempid=1;
+  let tempid=id;
+  const [load, setLoad] = useState(true);
   const { state: proposalDetails } = useLocation();
   const [exists, setExists] = useState("false");
   const [passed, setPassed] = useState("true");
@@ -41,8 +42,9 @@ const Proposal = ({account, contract, id}) => {
   useEffect( ()=>{
 
     fetchProposal().then(e=>1)
-  })
+  }, [])
   async function castvote(upvote){
+    console.log("voted func", upvote)
     if(contract && account){
       await contract.methods.castVote(tempid, upvote).send({from: account})
     }
@@ -143,14 +145,19 @@ const Proposal = ({account, contract, id}) => {
             }
           ]}
           onSubmit={async (e)=> {
+            setLoad(!load);
             alert("Vote cast");
+            console.log("vote option", e.data[0].inputResult[0])
             let tempop = e.data[0].inputResult[0];
             if(tempop==="For"){
               await castvote(true)
+              console.log("voted value", tempop)
             }else{
               await castvote(false)
+              console.log("voted value", tempop)
             }
-            console.log("vote option", e)
+            await fetchProposal()
+            
           }}
           title="Cast Vote"
           />

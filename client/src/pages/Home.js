@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import { TabList, Tab, Widget, Tag, Table, Form } from "@web3uikit/core";
 // import { Link } from "react-router-dom";
 
-const Home = ({contract, account, totalProposals, eligibleVoters, ongoing, proposalsdata, passrate}) => {
+const Home = ({contract, account, totalProposals, eligibleVoters, ongoing, proposalsdata, passrate, setid}) => {
   // const [totalProposals, setTotalProposal] = useState(52);
   // const [eligibleVoters, setEligibleVoters] = useState(423);
   // const [ongoing, setongoing] = useState(5);
@@ -51,7 +51,7 @@ const Home = ({contract, account, totalProposals, eligibleVoters, ongoing, propo
       let arr = [];
       arr[0]=e.id;
       arr[1]=e.title;
-      arr[2]=<Tag color={e.color} text={e.text}/>
+      arr[2]=<button onClick={(ex)=>{setid(e.id)}}><Link to="/proposal"><Tag color={e.color} text={e.text}/></Link></button>
       return(
         arr
       )

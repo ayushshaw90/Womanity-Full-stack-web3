@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import Web3 from "web3";
 
 const App = () => {
+  const [proposalid, setProposalId] = useState(1);
   const [eligibleVoters, setEligibleVoters] = useState(423);
   const [ongoing, setongoing] = useState(5);
   const [totalProposals, setTotalProposal] = useState(52);
@@ -144,7 +145,9 @@ const App = () => {
   async function FetchProposal(_id){
 
   }
-
+  function setIdfun(_id){
+    setProposalId(_id)
+  }
   return (
     <>
     {/* <h1>Hello World</h1>
@@ -156,8 +159,8 @@ const App = () => {
       </div>
       {/* <Home></Home> */}
       <Routes>
-        {account && <Route path="/" element={<Home contract={DPetitioner} account={account} totalProposals={totalProposals} eligibleVoters={eligibleVoters} ongoing={ongoing} proposalsdata={proposalData} passrate={(totalProposals-ongoing)/totalProposals*100} />}  />}
-        <Route path="/proposal" element={<Proposal contract={DPetitioner} account={account} />} />
+        {account && <Route path="/" element={<Home contract={DPetitioner} account={account} totalProposals={totalProposals} eligibleVoters={eligibleVoters} ongoing={ongoing} proposalsdata={proposalData} passrate={(totalProposals-ongoing)/totalProposals*100} setid={setIdfun}  />}  />}
+        <Route path="/proposal" element={<Proposal contract={DPetitioner} account={account} id={proposalid}/>} />
       </Routes>
     </>
   );
