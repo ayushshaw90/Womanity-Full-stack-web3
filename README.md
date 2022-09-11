@@ -20,7 +20,7 @@ Here people can file petitions based on women security and others can sign the p
 
 ![CSS3](https://img.shields.io/badge/CSS-orange?style=for-the-badge&logo=css3&logoColor=white)
 
-![Solidity](https://img.shields.io/badge/Solidity-yellow?style=for-the-badge&logo=solidity&logoColor=white)
+![Solidity](https://img.shields.io/badge/Solidity-teal?style=for-the-badge&logo=solidity&logoColor=white)
 
 ![Ethereum](https://img.shields.io/badge/ethereum-brown?style=for-the-badge&logo=ethereum&logoColor=white)
 
